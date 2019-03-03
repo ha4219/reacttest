@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Customer from './component/Customer';
+import CustomerAdd from './component/CustomerAdd';
 
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
@@ -57,43 +57,46 @@ class App extends Component {
   render() {
     const {classes}= this.props;
     return (
-      <Paper className={classes.root}>
-        <Table className={classes.table}>
-          <TableHead>
-            <TableRow>
-              <TableCell>id</TableCell>
-              <TableCell>image</TableCell>
-              <TableCell>name</TableCell>
-              <TableCell>birthday</TableCell>
-              <TableCell>gender</TableCell>
-              <TableCell>job</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-              {
-              this.state.customers ? this.state.customers.map(c=>{
-                return (
-                  <Customer
-                    key={c.id}
-                    id={c.id}
-                    image={c.image}
-                    name={c.name}
-                    bir={c.bir}
-                    gender={c.gender}
-                    job={c.job}
-                  />
-                )
-              })
-            :
-            <TableRow>
-              <TableCell colSpan="6" align="center">
-                <CircularProgress className={classes.progress} variant="determinate" value={this.state.completed}/>
-              </TableCell>
-            </TableRow> 
-            }
-          </TableBody>
-        </Table>
-      </Paper>
+      <div>
+        <Paper className={classes.root}>
+          <Table className={classes.table}>
+            <TableHead>
+              <TableRow>
+                <TableCell>id</TableCell>
+                <TableCell>image</TableCell>
+                <TableCell>name</TableCell>
+                <TableCell>birthday</TableCell>
+                <TableCell>gender</TableCell>
+                <TableCell>job</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+                {
+                this.state.customers ? this.state.customers.map(c=>{
+                  return (
+                    <Customer
+                      key={c.id}
+                      id={c.id}
+                      image={c.image}
+                      name={c.NAME}
+                      bir={c.bir}
+                      gender={c.gender}
+                      job={c.job}
+                    />
+                  )
+                })
+              :
+              <TableRow>
+                <TableCell colSpan="6" align="center">
+                  <CircularProgress className={classes.progress} variant="determinate" value={this.state.completed}/>
+                </TableCell>
+              </TableRow> 
+              }
+            </TableBody>
+          </Table>
+        </Paper>
+        <CustomerAdd/>
+      </div>
     );
   }
 }
